@@ -1,5 +1,7 @@
 let nyoba = document.getElementById('nyoba')
 let br = document.createElement('br')
+let play_again_butt = document.getElementById('play-again-button');
+play_again_butt.style.display ="none";
 let no_but = document.getElementById('no-button');
 let yes_but = document.getElementById('yes-button');
 let yes_val = document.getElementById('yes-button').value;
@@ -12,7 +14,15 @@ let display = 1;
 let i = 0;
 let click_count = 1;
 let angka = document.createElement('span');
+angka.style.fontSize = "50px";
+angka.style.fontWeight= "bold";
+angka.style.fontFamily = "Arial, Helvetica, sans-seri";
+angka.style.color = "black"
 let container = document.getElementById('container');
+container.style.fontSize = "50px";
+container.style.fontWeight= "bold";
+container.style.fontFamily = "Arial, Helvetica, sans-seri";
+container.style.color = "black"
 let ready = document.getElementById('ready');
 
 let dates = [
@@ -36,7 +46,8 @@ let dates = [
      [20, 21, 22, 23],
      [24, 25, 26, 27],
      [28, 29, 30, 31]]
-    ]   ;
+    ];
+
 
     for(let i = 0; i <1; i++){
         for(let j = 0; j < 4; j++){
@@ -58,28 +69,28 @@ let dates = [
             container.innerText = " ";
             angka.innerText = "";
         }
-        if(click_count === 5){
-            data_set_label.innerHTML = "Your birthday is ";
-            container.innerText = date;
-            angka.innerText = "";
+        
+        if (set < 6) {
+            span.innerHTML = set++;
         }
-
-        if (click_count === 5) {
-            console.log(date);
-        }
-
-       if (set < 6) {
-           span.innerHTML = set++;
-       }
         
         for(let j = 0; j < 4; j++){
             for (let k = 0; k < 4; k++){
                 if(display < 5){
-                angka.innerText += dates[display][j][k] + ", ";
-                container.append(angka); 
+                    angka.innerText += dates[display][j][k] + ", ";
+                    container.append(angka); 
                 }
             }
             angka.innerHTML += "<br>"
+        }
+        
+        if(click_count === 5){
+            data_set_label.innerHTML = "Your birthday is ";
+            container.innerText = date;
+            angka.innerText = "";
+            yes_but.style.display ="none";
+            no_but.style.display = "none";
+            play_again_butt.style.display = "inline";
         }
         display++;
         click_count++;
